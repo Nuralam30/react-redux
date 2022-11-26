@@ -1,0 +1,14 @@
+
+.product{
+    padding: 20px 30px;
+    margin-bottom: 20px;
+    background-color: #e7e7e7;
+}
+.product button{
+    font-size: 1.1em;
+    border: none;
+    border-radius: 5px;
+    background-color: #8e9291;
+    padding: 4px 10px;
+    cursor: pointer;
+}
