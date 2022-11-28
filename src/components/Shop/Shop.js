@@ -1,23 +1,43 @@
 import React from 'react';
 import './Shop.css';
 import Product from '../Product/Product';
+import { addToCart, removeFromCart } from '../../redux/actions/cartActions';
+import { connect } from 'react-redux';
 
-const Shop = () => {
-    const products = [
-        { id: 1, name: 'Dell inspiron N5110 Laptop'},
-        { id: 2, name: 'HP pabillion series Laptop'},
-        { id: 1, name: 'Samsung bt5220 Laptop'},
-        { id: 1, name: 'Dell N5210 Laptop'},
-        { id: 1, name: 'Asus ultra G-series Laptop'}
-    ]
+const Shop = (props) => {
+    console.log(props)
+    const {products, addToCart} = props;
+
     return (
         <div className='shop'>
             <h2>This is Shop</h2>
             {
-                products.map( pd => <Product product={pd}></Product>)
+                products.map( pd => <Product 
+                    key={pd.id} 
+                    product={pd} 
+                    addToCart={addToCart}
+                    ></Product>)
             }
         </div>
     );
 };
 
-export default Shop;
+
+const mapStateToProps = state =>{
+    return{
+        cart: state.cart,
+        products: state.products
+    }
+}
+
+const mapStateToDispatch = {
+    addToCart: addToCart,
+    removeFromCart: removeFromCart
+}
+
+// const connectToStore = connect(mapStateToProps, mapStateToDispatch);
+// const connectedStore = connectToStore(Shop);
+
+// connect(mapStateToProps, mapStateToDispatch)(Shop);
+
+export default connect(mapStateToProps, mapStateToDispatch)(Shop);

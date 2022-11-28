@@ -3,12 +3,12 @@ import './Product.css';
 
 const Product = (props) => {
 
-    const { id, name } = props.product;
+    const {addToCart, product} = props;
 
     return (
         <div className='product'>
-            <h3>{name}</h3>
-            <button>add to cart</button>
+            <h3>{product.name}</h3>
+            <button onClick={() => addToCart(product.id)}>add to cart</button>
         </div>
     );
 };
