@@ -11,7 +11,7 @@ const Cart = (props) => {
             <h2>This is cart</h2>
             <ul>
                 {
-                    cart.map(id => <li key={id}>{id}<button onClick={() => removeFromCart(id)}>X</button></li>)
+                    cart.map(ca => <li key={ca.cartID}>{ca.name}<button onClick={() => removeFromCart(ca.cartId)}>X</button></li>)
                 }
             </ul>
         </div>
